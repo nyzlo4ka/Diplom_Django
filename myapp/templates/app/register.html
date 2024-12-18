@@ -1,0 +1,7 @@
+    <h2>Зарегистрироваться</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Зарегистрироваться</button>
+        <a href="{% url 'home' %}">На главную</a>
+    </form>
