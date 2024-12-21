@@ -7,78 +7,9 @@
 
 # Структура проекта
 
-
 ![111](https://github.com/user-attachments/assets/0760d9e9-5a94-4b41-bca8-217f2f1c80fc)
 
 ![222](https://github.com/user-attachments/assets/d2d5e616-99a7-432f-99dc-d072ee433da2)
-
-
-myapp/
-
-├── myapp/
-
-│   ├── __init__.py
-
-│   ├── settings.py
-
-│   ├── urls.py
-
-│   ├── wsgi.py
-
-│   └── asgi.py
-
-├── app/
-
-│   ├── __init__.py
-
-│   ├── admin.py
-
-│   ├── apps.py
-
-│   ├── forms.py
-
-│   ├── models.py
-
-│   ├── views.py
-
-│   ├── tests.py
-
-│   ├── urls.py
-
-│   └── migrations/
-
-│       └── __init__.py
-
-├── templates/
-
-│   └── app/
-
-│       ├── base.html
-
-│       ├── book_detail.html
-
-│       ├── books_list.html
-
-│       ├── cart.html
-
-│       ├── home.html
-
-│       ├── login.html
-
-│       ├── register.html
-
-│       └── search.html
-
-├── books.json
-
-├── db.db
-
-├── manage.py
-
-├── manage.py
-
-└── req.txt
-
 
 ## Содержание
 - [Технологии](#технологии)
