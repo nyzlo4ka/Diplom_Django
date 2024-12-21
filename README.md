@@ -7,6 +7,10 @@
 
 # Структура проекта
 
+
+![111](https://github.com/user-attachments/assets/0760d9e9-5a94-4b41-bca8-217f2f1c80fc)![222](https://github.com/user-attachments/assets/53eb1226-94ad-4d72-b3b6-b5d1d7ab3bac)
+
+
 myapp/
 
 ├── myapp/
