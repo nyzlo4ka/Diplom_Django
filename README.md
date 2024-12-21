@@ -10,13 +10,21 @@
 myapp/
 
 ├── myapp/
+
 │   ├── __init__.py
+
 │   ├── settings.py
+
 │   ├── urls.py
+
 │   ├── wsgi.py
+
 │   └── asgi.py
+
 ├── app/
+
 │   ├── __init__.py
+
 │   ├── admin.py
 
 │   ├── apps.py
