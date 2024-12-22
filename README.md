@@ -53,7 +53,7 @@ python manage.py runserver
 
 ![1](https://github.com/user-attachments/assets/b4f516a2-0c3b-47d6-b180-3b688e9b5dd5)
 
-read_books (Чтение книг): Извлекает все книги из базы данных, разбивает их на страницы по 10 шт и отображает шаблон "books_list.html" с информацией о страницах.
+read_books (Чтение книг): Извлекает все книги из базы данных, разбивает их на страницы по 7 шт и отображает шаблон "books_list.html" с информацией о страницах.
 
 ![5](https://github.com/user-attachments/assets/cb1c20b6-85ee-47ff-b4f2-2a749830bc7f)
 
