@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поиск книг</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        header, footer {
+            background-color: #fff;
+            padding: 20px;
+            border-bottom: 1px solid #ccc;
+        }
+        nav a {
+            margin-right: 15px;
+            text-decoration: none;
+            color: #333;
+        }
+        nav button {
+            background-color: #E60000;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        nav button:hover {
+            background-color: #D50000;
+        }
+        main {
+            padding: 20px;
+        }
+        h3 {
+            color: #E60000;
+        }
+        /* Увеличение расстояния между позициями в списке */
+        ul {
+            padding-left: 0; /* Убираем отступ слева */
+            list-style-type: none; /* Убираем маркеры списка */
+        }
+        ul li {
+            padding: 5px 0; /* Отступ сверху и снизу */
+        }
+        .pagination {
+            margin-top: 20px;
+        }
+        .pagination a {
+            margin: 0 5px;
+            text-decoration: none;
+            color: #E60000;
+        }
+        .pagination .disabled {
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="{% url 'home' %}">На главную</a>
+            <a href="{% url 'read_books' %}">Назад к списку книг</a>
+            <a href="{% url 'view_cart' %}"><button type="button">Корзина</button></a>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Поиск книг</h2>
+            <form method="GET">
+                <input type="text" name="query" value="{{ query }}" placeholder="Поиск...">
+                <button type="submit">Найти</button>
+            </form>
+        </section>
+        <section>
+            <h3>Результаты поиска:</h3>
+            <ul>
+                {% for book in books %}
+                    <li>
+                        <a href="{% url 'get_book_by_id' book.id %}">{{ book.title }}</a> | {{ book.author }} | {{ book.genre }}
+                    </li>
+                {% empty %}
+                    <li>Книги не найдены.</li>
+                {% endfor %}
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Чернокнижник</p>
+    </footer>
+</body>
+</html>

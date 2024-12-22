@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список книг</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        header, footer {
+            background-color: #fff;
+            padding: 20px;
+            border-bottom: 1px solid #ccc;
+        }
+        nav a {
+            margin-right: 15px;
+            text-decoration: none;
+            color: #333;
+        }
+        nav button {
+            background-color: #E60000;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        nav button:hover {
+            background-color: #D50000;
+        }
+        main {
+            padding: 20px;
+        }
+        h3 {
+            color: #E60000;
+        }
+        /* Увеличение расстояния между позициями в списке */
+        ul {
+            padding-left: 0; /* Убираем отступ слева */
+            list-style-type: none; /* Убираем маркеры списка */
+        }
+        ul li {
+            padding: 5px 0; /* Отступ сверху и снизу */
+        }
+        .pagination {
+            margin-top: 20px;
+        }
+        .pagination a {
+            margin: 0 5px;
+            text-decoration: none;
+            color: #E60000;
+        }
+        .pagination .disabled {
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="{% url 'home' %}">На главную</a>
+            <a href="{% url 'view_cart' %}"><button type="button">Корзина</button></a>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Поиск</h2>
+            <form action="{% url 'search' %}" method="get">
+                <input type="text" name="query" placeholder="Введите название, автора или жанр" required>
+                <button type="submit">Найти</button>
+            </form>
+        </section>
+        <section>
+            <h3>Список книг</h3>
+            <ul>
+                {% for book in books %}
+                    <li>
+                        <a href="{% url 'get_book_by_id' book.id %}">{{ book.title }}</a> | {{ book.author }} | {{ book.genre }}
+                    </li>
+                {% endfor %}
+            </ul>
+            <div class="pagination">
+                <span class="step-links">
+                    {% if books.has_previous %}
+                        <a href="?page=1">&laquo; Первая</a>
+                        <a href="?page={{ books.previous_page_number }}">Назад</a>
+                    {% endif %}
+
+                    <span class="current">
+                        Page {{ books.number }} of {{ books.paginator.num_pages }}.
+                    </span>
+
+                    {% if books.has_next %}
+                        <a href="?page={{ books.next_page_number }}">Дальше</a>
+                        <a href="?page={{ books.paginator.num_pages }}">Последняя &raquo;</a>
+                    {% endif %}
+                </span>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Чернокнижник</p>
+    </footer>
+</body>
+</html>

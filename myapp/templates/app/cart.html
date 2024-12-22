@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корзина</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            color: #333;
+            background-color: #f9f9f9;
+            margin: 0;
+        }
+        header {
+            background-color: #fff;
+            padding: 20px;
+            border-bottom: 1px solid #ccc;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+        }
+        main {
+            padding: 20px;
+        }
+        h3 {
+            color: #E60000;
+        }
+        footer {
+            background-color: #fff;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="{% url 'home' %}">На главную</a>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h3>Корзина</h3>
+            {% for item in items_with_price %}
+                <p>
+                    {{ item.title }} - {{ item.quantity }} x {{ item.price|floatformat:2 }} = {{ item.item_total|floatformat:2 }}
+                    <a href="{% url 'remove_from_cart' item.book.id %}">                <button type="submit">Удалить</button></a>
+                </p>
+            {% endfor %}
+            <h4>Итого: {{ total_price|floatformat:2 }}</h4>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Чернокнижник</p>
+    </footer>
+</body>
+</html>

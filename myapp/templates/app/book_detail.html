@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ book.title }}</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        header, footer {
+            background-color: #fff;
+            padding: 20px;
+            border-bottom: 1px solid #ccc;
+        }
+        nav a, nav button {
+            text-decoration: none;
+            color: #333;
+            margin-right: 15px;
+        }
+        nav button {
+            cursor: pointer;
+            background-color: #E60000;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+        nav button:hover {
+            background-color: #D50000;
+        }
+        main {
+            padding: 20px;
+        }
+        h1 {
+            color: #E60000;
+        }
+        footer {
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="{% url 'home' %}">На главную</a>
+            <a href="{% url 'read_books' %}">Назад к списку книг</a>
+            <a href="{% url 'view_cart' %}"><button type="button">Корзина</button></a>
+        </nav>
+    </header>
+    <main>
+        <h1>{{ book.title }}</h1>
+        <p>Автор: {{ book.author }}</p>
+        <p>Жанр: {{ book.genre }}</p>
+        <p>Описание: {{ book.description }}</p>
+        <p>Издательство: {{ book.publish }}</p>
+        <p>Год публикации: {{ book.year }}</p>
+        <p>Количество страниц: {{ book.pages }}</p>
+        <p>Цена: {{ book.cost }}</p>
+        <form action="{% url 'add_to_cart' book.id %}" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Добавить в корзину">
+        </form>
+    </main>
+    <footer>
+        <p>&copy; 2024 Чернокнижник</p>
+    </footer>
+</body>
+</html>
